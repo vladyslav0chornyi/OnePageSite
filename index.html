@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дуй Шоп — Запали свою емоцію</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="output.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating vape icons (SVG, сині та неонові) -->
+    <svg class="floating-vape" style="left: 8vw; animation-delay:0s; width: 72px;" viewBox="0 0 60 100">
+        <rect x="20" y="20" width="20" height="60" rx="8" fill="#5ed1ff"/>
+        <rect x="25" y="10" width="10" height="15" rx="5" fill="#fff"/>
+        <rect x="25" y="80" width="10" height="8" rx="4" fill="#f7b1e6"/>
+        <circle cx="30" cy="50" r="3" fill="#ffde59"/>
+    </svg>
+    <svg class="floating-vape" style="left: 60vw; animation-delay:2s; width: 60px;" viewBox="0 0 60 100">
+        <rect x="22" y="18" width="16" height="64" rx="8" fill="#f7b1e6"/>
+        <rect x="25" y="8" width="10" height="12" rx="5" fill="#5ed1ff"/>
+        <rect x="25" y="82" width="10" height="9" rx="4" fill="#ffde59"/>
+        <circle cx="30" cy="60" r="3" fill="#fff"/>
+    </svg>
+    <svg class="floating-vape" style="left: 85vw; animation-delay:4s; width: 56px;" viewBox="0 0 60 100">
+        <rect x="24" y="20" width="12" height="60" rx="6" fill="#fff"/>
+        <rect x="27" y="10" width="6" height="10" rx="3" fill="#5ed1ff"/>
+        <rect x="27" y="80" width="6" height="8" rx="3" fill="#f7b1e6"/>
+        <circle cx="30" cy="45" r="2.5" fill="#ffde59"/>
+    </svg>
+
+    <!-- HEADER -->
+    <header class="glass py-4 sticky top-0 z-50 w-full mx-0 mt-0 backdrop-blur-lg mobile-header">
+        <div class="container mx-auto px-4 flex justify-between items-center relative">
+            <!-- Logo -->
+            <div class="logo-custom">
+                <span class="blue">Дуй</span><span class="white">Шоп</span>
+            </div>
+            <!-- Desktop menu -->
+            <nav class="desktop-menu">
+                <ul class="flex space-x-8 text-lg font-semibold">
+                    <li><a href="#home" class="neon-link">Головна</a></li>
+                    <li><a href="#products" class="neon-link">Асортимент</a></li>
+                    <li><a href="#about" class="neon-link">Про нас</a></li>
+                    <li><a href="#reviews" class="neon-link">Відгуки</a></li>
+                    <li><a href="#blog" class="neon-link">Блог</a></li>
+                    <li><a href="#contact" class="neon-link">Контакти</a></li>
+                </ul>
+            </nav>
+            <!-- Mobile burger -->
+            <button class="burger-menu" id="burger-btn" aria-label="Відкрити меню">
+                <span></span><span></span><span></span>
+            </button>
+            <!-- Mobile nav (hidden by default) -->
+            <nav class="mobile-menu" id="mobile-menu">
+                <ul>
+                    <li><a href="#home">Головна</a></li>
+                    <li><a href="#products">Асортимент</a></li>
+                    <li><a href="#about">Про нас</a></li>
+                    <li><a href="#reviews">Відгуки</a></li>
+                    <li><a href="#blog">Блог</a></li>
+                    <li><a href="#contact">Контакти</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO AREA -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="z-10 text-center px-4">
+            <h2 class="neon-title neon-gradient mb-8 drop-shadow-lg">Запали свою емоцію</h2>
+            <p class="text-2xl md:text-3xl font-light mb-8 neon-gradient">Відкрий новий рівень ароматного задоволення разом із Дуй Шоп</p>
+            <a href="#products" class="btn-neon px-10 py-4 text-2xl mt-6 shadow-xl">Дослідити аромати</a>
+        </div>
+    </section>
+
+    <hr class="fancy-divider">
+
+    <!-- PRODUCTS -->
+    <section id="products" class="section py-20">
+        <h2 class="neon-title text-center mb-20 neon-gradient">Наш вибір</h2>
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="product-card glass p-8">
+                <img src="https://images.unsplash.com/photo-1520880867055-1e30d1cb001c?auto=format&fit=crop&w=400&q=80" alt="Ароматні рідини" class="rounded-lg mb-6 shadow-lg w-full h-56 object-cover">
+                <h3 class="text-3xl font-bold neon-gradient mb-2">Ароматні рідини</h3>
+                <div class="stars mb-2">★★★★★</div>
+                <p class="text-blue-100 mb-4">Від соковитих фруктів до пряних десертів — для кожного знайдеться свій улюблений смак.</p>
+                <p class="text-[#ffde59] font-bold text-xl mb-4">Від 200 грн</p>
+                <button class="btn-neon px-8 py-2 text-lg">Дізнатися більше</button>
+            </div>
+            <div class="product-card glass p-8">
+                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Пристрої" class="rounded-lg mb-6 shadow-lg w-full h-56 object-cover">
+                <h3 class="text-3xl font-bold neon-gradient mb-2">Пристрої</h3>
+                <div class="stars mb-2">★★★★★</div>
+                <p class="text-blue-100 mb-4">Сучасний дизайн, зручність, довговічність. Ваш стиль — ваш пристрій.</p>
+                <p class="text-[#ffde59] font-bold text-xl mb-4">Від 1000 грн</p>
+                <button class="btn-neon px-8 py-2 text-lg">Дізнатися більше</button>
+            </div>
+            <div class="product-card glass p-8">
+                <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Аксесуари" class="rounded-lg mb-6 shadow-lg w-full h-56 object-cover">
+                <h3 class="text-3xl font-bold neon-gradient mb-2">Аксесуари</h3>
+                <div class="stars mb-2">★★★★★</div>
+                <p class="text-blue-100 mb-4">Додай яскравих штрихів до свого ароматного світу з нашими аксесуарами!</p>
+                <p class="text-[#ffde59] font-bold text-xl mb-4">Від 150 грн</p>
+                <button class="btn-neon px-8 py-2 text-lg">Дізнатися більше</button>
+            </div>
+        </div>
+    </section>
+
+    <hr class="fancy-divider">
+
+    <!-- ABOUT -->
+    <section id="about" class="section py-20">
+        <div class="container mx-auto text-center glass px-8 py-16">
+            <h2 class="neon-title mb-8 neon-gradient">Про Дуй Шоп</h2>
+            <p class="text-2xl text-blue-100 max-w-4xl mx-auto">Дуй Шоп — це більше, ніж магазин. Це місце, де аромат, стиль і технології творять магію моменту. Тут кожен знаходить щось особливе — для себе чи для подарунка. Довіра, якість і турбота про ваш комфорт — наші головні цінності. Приходьте за емоціями, що залишаться з вами назавжди!</p>
+        </div>
+    </section>
+
+    <!-- ГАЛЕРЕЯ ФОТО МАГАЗИНУ -->
+    <section class="shop-gallery container mx-auto py-12">
+        <div class="gallery-title text-center">Фото нашого магазину</div>
+        <div class="gallery-grid">
+            <div class="gallery-photo">
+                <!-- <img src="store-photo1.jpg" alt="Магазин фото 1"> -->
+                <span>Фото №1</span>
+            </div>
+            <div class="gallery-photo">
+                <!-- <img src="store-photo2.jpg" alt="Магазин фото 2"> -->
+                <span>Фото №2</span>
+            </div>
+            <div class="gallery-photo">
+                <!-- <img src="store-photo3.jpg" alt="Магазин фото 3"> -->
+                <span>Фото №3</span>
+            </div>
+        </div>
+    </section>
+
+    <hr class="fancy-divider">
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="section py-20">
+        <h2 class="neon-title text-center mb-20 neon-gradient">Відгуки, що надихають</h2>
+        <div class="container mx-auto flex flex-wrap justify-center" id="review-list"></div>
+    </section>
+
+    <hr class="fancy-divider">
+
+    <!-- BLOG -->
+    <section id="blog" class="section py-20">
+        <h2 class="neon-title text-center mb-20 neon-gradient">Блог</h2>
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-14">
+            <div class="glass blog-card hover:scale-105 transition-all p-8">
+                <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Як вибрати аромат" class="rounded-lg mb-6 shadow-lg w-full h-52 object-cover">
+                <h3 class="text-2xl font-bold neon-gradient mb-2">Як знайти свій ароматний стиль?</h3>
+                <p class="text-blue-100 mb-4">5 порад для вибору смаку, який запам'ятається, як перше кохання.</p>
+                <a href="#" class="neon-link font-bold hover:underline">Читати далі →</a>
+            </div>
+            <div class="glass blog-card hover:scale-105 transition-all p-8">
+                <img src="https://images.unsplash.com/photo-1454023492550-5696f8ff10e1?auto=format&fit=crop&w=600&q=80" alt="Тренди смаків" class="rounded-lg mb-6 shadow-lg w-full h-52 object-cover">
+                <h3 class="text-2xl font-bold neon-gradient mb-2">Тренди смаків 2025</h3>
+                <p class="text-blue-100 mb-4">Що буде популярним у світі ароматів наступного року?</p>
+                <a href="#" class="neon-link font-bold hover:underline">Читати далі →</a>
+            </div>
+        </div>
+    </section>
+
+    <hr class="fancy-divider">
+
+    <!-- CONTACT & MAP -->
+    <section id="contact" class="section py-20">
+        <div class="container mx-auto glass px-8 py-16 text-center">
+            <h2 class="neon-title mb-10 neon-gradient">Зв’яжіться з нами</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="contact-form text-left">
+                    <p class="text-2xl text-blue-100 mb-4">Електронна пошта: <a href="mailto:info@dudishop.com" class="neon-link hover:underline">info@dudishop.com</a></p>
+                    <p class="text-2xl text-blue-100 mb-4">Телефон: <a href="tel:+380123456789" class="neon-link hover:underline">+380 123 456 789</a></p>
+                    <p class="text-2xl text-blue-100 mb-8">Адреса: вул. Центральна, 1, Київ</p>
+                </div>
+                <div class="contact-form">
+                    <p class="text-2xl text-blue-100 mb-4">Підпишись на новинки:</p>
+                    <form id="subscribe-form" class="flex flex-col items-center">
+                        <input type="email" required placeholder="Введіть ваш email" class="w-full max-w-md p-4 rounded-lg border border-blue-200 mb-4 text-lg text-blue-800">
+                        <button type="submit" class="btn-neon px-10 py-3 text-xl">Підписатися</button>
+                        <span id="subscribe-success" class="neon-link hidden mt-4 text-xl font-semibold">Дякуємо за підписку!</span>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-12 rounded-xl overflow-hidden shadow-lg border-2 border-[#5ed1ff] flex justify-center">
+                <!-- Google Map з маркером на Бесарабська площа, 2, Київ -->
+                <iframe
+                    src="https://www.google.com/maps?q=50.442124, 30.521446&z=17&output=embed"
+                    width="100%"
+                    height="350"
+                    style="border:0; min-width:300px; max-width:900px;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer class="glass py-10 mt-10 text-center">
+        <div class="footer-logo">
+            <div class="logo-custom">
+                <span class="blue">Дуй</span><span class="white">Шоп</span>
+            </div>
+            <div class="footer-social">
+                <a href="#" title="Instagram" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" stroke="#fff" stroke-width="2" fill="none"/><rect x="9" y="9" width="14" height="14" rx="7" fill="none" stroke="#fff" stroke-width="2"/><circle cx="23" cy="9" r="2" fill="#fff"/></svg>
+                </a>
+                <a href="#" title="Facebook" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="none" stroke="#fff" stroke-width="2"/><path d="M17.5 27v-8h2.5l1-4h-3.5v-2c0-1 .5-2 2-2h2V7.5c-.2 0-1.2-.1-2.3-.1-3.1 0-4.7 1.6-4.7 4.5v2.1H9v4h3v8h5.5z" fill="#fff"/></svg>
+                </a>
+                <a href="#" title="Telegram" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="none" stroke="#fff" stroke-width="2"/><polygon points="8,16 24,10 20,22 16,18 13,20" fill="#fff"/></svg>
+                </a>
+            </div>
+        </div>
+        <p class="neon-link text-xl mt-7">&copy; 2025 Дуй Шоп. Всі права захищені.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
