@@ -15,6 +15,22 @@ if (burgerBtn && mobileMenu) {
             document.body.classList.remove('mobile-menu-open');
         }
     });
+
+    // Закрити меню при зміні розміру вікна (наприклад, якщо з мобільного перейти на десктоп)
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1023 && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('mobile-menu-open');
+        }
+    });
+
+    // Закрити меню по ESC
+    window.addEventListener('keydown', (e) => {
+        if (e.key === "Escape" && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            document.body.classList.remove('mobile-menu-open');
+        }
+    });
 }
 
 // ----- ПІДСВІЧУВАННЯ АКТИВНОЇ ВКЛАДКИ МЕНЮ ПРИ СКРОЛІ -----
@@ -99,16 +115,33 @@ window.addEventListener('load', setActiveMenu);
     }, {passive: false});
 })();
 
-// Subscribe form effect
+// Subscribe form effect + AJAX-запис у бекенд
 const subscribeForm = document.getElementById('subscribe-form');
 if(subscribeForm){
-    subscribeForm.addEventListener('submit', function(e){
+    subscribeForm.addEventListener('submit', async function(e){
         e.preventDefault();
-        document.getElementById('subscribe-success').classList.remove('hidden');
-        setTimeout(() => {
-            document.getElementById('subscribe-success').classList.add('hidden');
-        }, 4000);
-        this.reset();
+        const name = this.elements['name'].value.trim();
+        const phone = this.elements['phone'].value.trim();
+        // Відправка на Flask backend
+        try {
+            const res = await fetch('/subscribe', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ name, phone })
+            });
+            if (res.ok) {
+                document.getElementById('subscribe-success').classList.remove('hidden');
+                setTimeout(() => {
+                    document.getElementById('subscribe-success').classList.add('hidden');
+                }, 4000);
+                this.reset();
+            } else {
+                const data = await res.json();
+                alert(data.message || "Сталася помилка!");
+            }
+        } catch (err) {
+            alert("Сталася помилка при відправці форми!");
+        }
     });
 }
 
