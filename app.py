@@ -5,21 +5,18 @@ import io
 import csv
 import os
 import re
+import json
 
 app = Flask(__name__)
 
 # --- Google Sheets налаштування ---
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-# Шлях до service_account.json — для Render краще так:
-SERVICE_ACCOUNT_FILE = (
-    "/etc/secrets/service_account.json"
-    if os.path.exists("/etc/secrets/service_account.json")
-    else "service_account.json"
-)
-SPREADSHEET_ID = '1bgRbJv8CRkITl1r2x1gFQj2keYlV_W4Zf9Ojp1WUEIU'  # встав свій ID (з URL)
+SPREADSHEET_ID = '1bgRbJv8CRkITl1r2x1gFQj2keYlV_W4Zf9Ojp1WUEIU'  # встав свій ID
 SHEET_NAME = 'Sheet1'  # або як називається лист
 
-creds = Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+# --- Авторизація через секрет у змінній оточення ---
+service_account_info = json.loads(os.environ["GOOGLE_SERVICE_ACCOUNT"])
+creds = Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
 gc = gspread.authorize(creds)
 sheet = gc.open_by_key(SPREADSHEET_ID).worksheet(SHEET_NAME)
 
