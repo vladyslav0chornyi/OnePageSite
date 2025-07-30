@@ -603,3 +603,808 @@ section, .section {
 footer {
     padding: 2.5rem 1.5rem 2rem;
 }
+
+body {
+  overflow-x: hidden;
+}
+
+/* Додаємо до твоїх стилів — можна вставити після @media (max-width: 640px) або наприкінці файлу */
+
+/* 1. Fix для "Запали свою емоцію" — повноекранний hero без перекриття хедером */
+@media (max-width: 640px) {
+  #home.fullscreen-section {
+    min-height: 100dvh !important;
+    height: 100dvh !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    position: relative;
+  }
+  /* Компенсуємо хедер */
+  header.mobile-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 50;
+  }
+  #home .neon-title,
+  #home p,
+  #home .btn-neon {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
+  }
+}
+
+/* 2. Кнопка "Дізнатися більше" та заголовки/описи в product-card по центру */
+@media (max-width: 640px) {
+  .product-card h3,
+  .product-card p,
+  .product-card .stars,
+  .product-card .btn-neon {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    width: 100%;
+  }
+  .product-card .btn-neon {
+    width: 90% !important;
+    max-width: 320px !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* 3. Галерея фото в about — зробити фото більш пропорційними */
+@media (max-width: 640px) {
+  .gallery-photo {
+    height: 180px !important;
+    min-height: 140px !important;
+    max-height: 220px !important;
+  }
+  .gallery-photo img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 1rem !important;
+  }
+}
+
+/* 4. Вікно "Підпишись на новинки" по центру */
+@media (max-width: 640px) {
+  .subscribe-bigbox {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    left: 50%;
+    transform: translateX(0%) !important;
+    position: static !important;
+    max-width: 98vw !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.fullscreen-section {
+  scroll-margin-top: 64px; /* або висота твого header */
+}
+@media (max-width: 640px) {html, body {
+    scroll-behavior: smooth;
+    height: 100%;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #191926 0%, #1f3356 65%, #320a34 100%);
+    color: #fff;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+.fullscreen-section {
+    height: 100dvh;
+    min-height: 100dvh;
+    width: 100vw;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.glass {
+    background: rgba(30,30,60,0.88);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(94,209,255,0.07);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(94,209,255,0.12);
+}
+.btn-neon {
+    background: linear-gradient(90deg, #5ed1ff 0%, #f7b1e6 50%, #ffde59 100%);
+    color: #222;
+    font-weight: bold;
+    border-radius: 9999px;
+    box-shadow: 0 2px 15px 0 #5ed1ff77, 0 0 12px 2px #f7b1e6;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: none;
+}
+.btn-neon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 28px 0 #ffde5977, 0 0 18px 2px #f7b1e6;
+}
+.fancy-divider {
+    height: 4px;
+    border: none;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #5ed1ff, #f7b1e6, #ffde59);
+    margin: 2rem auto;
+    width: 40vw;
+    box-shadow: 0 0 8px #5ed1ff77, 0 0 14px #f7b1e677;
+}
+.logo-custom {
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 2.5rem;
+}
+.logo-custom .blue {
+    color: #5ed1ff;
+    text-shadow: 0 0 6px #5ed1ff99, 0 0 10px #fff2;
+}
+.logo-custom .white {
+    background: #fff;
+    padding: 0 0.1em;
+    border-radius: 4px;
+    box-shadow: 0 0 8px #5ed1ff22;
+    color: #191926;
+}
+.product-card {
+    box-shadow: 0 4px 18px 0 #5ed1ff33;
+    transition: transform 0.4s cubic-bezier(.23,1.04,.46,.98), box-shadow 0.3s;
+    background: rgba(30,30,60,0.97);
+    border: 1.5px solid #f7b1e633;
+    border-radius: 1.5rem;
+    padding: 2rem 1.2rem;
+}
+.product-card:hover {
+    transform: translateY(-8px) scale(1.03) rotate(-1deg);
+    box-shadow: 0 8px 26px 0 #f7b1e655;
+    border-color: #5ed1ff;
+}
+.stars {
+    color: #ffde59;
+    text-shadow: 0 0 4px #ffde5977;
+    font-size: 1.4rem;
+}
+.floating-vape {
+    pointer-events: none;
+    position: fixed;
+    z-index: 9999;
+    opacity: 0.13;
+    animation: floatUp 7s linear infinite;
+    filter: drop-shadow(0 0 8px #5ed1ff) drop-shadow(0 0 3px #f7b1e6);
+}
+@keyframes floatUp {
+    0% { transform: scale(0.7) translateY(100vh) rotate(0deg);}
+    100% { transform: scale(1.1) translateY(-20vh) rotate(35deg);}
+}
+.neon-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #5ed1ff;
+    text-shadow: 0 0 7px #5ed1ffbb, 0 0 18px #f7b1e6aa, 0 0 27px #ffde5977;
+    letter-spacing: 2px;
+}
+.neon-gradient {
+    background: linear-gradient(90deg, #5ed1ff 10%, #f7b1e6 55%, #fff 95%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-shadow: 0 0 8px #5ed1ff77, 0 0 18px #f7b1e666, 0 0 22px #ffde5944;
+}
+a, .neon-link {
+    color: #5ed1ff;
+    text-shadow: 0 0 5px #5ed1ff99;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+a:hover, .neon-link:hover {
+    color: #fff;
+    text-shadow: 0 0 9px #f7b1e6cc;
+}
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 1.5rem;
+}
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    background: rgba(30,30,60,0.8);
+    box-shadow: 0 2px 8px #5ed1ff33;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.footer-social a:hover {
+    background: #5ed1ff;
+    box-shadow: 0 2px 14px #fff, 0 0 18px #f7b1e6;
+}
+.footer-social svg {
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+    filter: drop-shadow(0 0 4px #5ed1ff88);
+    transition: fill 0.2s;
+}
+.footer-social a:hover svg {
+    fill: #191926;
+}
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+/* Gallery styles */
+.shop-gallery {
+    margin-top: 3rem;
+    margin-bottom: 2.5rem;
+}
+.shop-gallery .gallery-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #5ed1ff;
+    text-shadow: 0 0 7px #5ed1ff77, 0 0 10px #fff2;
+    letter-spacing: 1px;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+@media (min-width: 640px) {
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (min-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+.gallery-photo {
+    width: 100%;
+    height: 440px;
+    background: linear-gradient(120deg, #232345 80%, #5ed1ff 100%);
+    background-blend-mode: lighten;
+    border-radius: 1rem;
+    border: 2px solid #5ed1ff;
+    box-shadow: 0 2px 10px #5ed1ff22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+.gallery-photo span {
+    color: #5ed1ff99;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-shadow: 0 0 5px #fff, 0 0 10px #5ed1ff44;
+}
+.gallery-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px #0003;
+    transition:
+        transform 0.4s cubic-bezier(0.4,0.2,0.2,1),
+        box-shadow 0.4s cubic-bezier(0.4,0.2,0.2,1);
+}
+.gallery-photo img:hover {
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 16px 48px #5ed1ff55, 0 4px 16px #ffde591a;
+    z-index: 1;
+}
+
+/* MOBILE HEADER/BURGER MENU */
+.mobile-header {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+}
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+}
+.burger-menu span {
+    display: block;
+    width: 29px;
+    height: 3.7px;
+    background: #5ed1ff;
+    margin: 4px 0;
+    border-radius: 4px;
+    transition: all 0.3s;
+    box-shadow: 0 0 6px #5ed1ff33;
+}
+.mobile-menu {
+    display: none;
+}
+.mobile-menu.open {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100dvh;
+    background: rgba(25,25,38,0.96);
+    z-index: 1001;
+    padding-top: 90px;
+    animation: slideDown 0.22s;
+}
+@keyframes slideDown {
+    from { opacity:0; transform: translateY(-40px);}
+    to { opacity:1; transform: translateY(0);}
+}
+.mobile-menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.mobile-menu li a {
+    color: #5ed1ff;
+    text-shadow: 0 0 6px #5ed1ff77;
+    letter-spacing: 1px;
+    transition: color 0.18s;
+}
+.mobile-menu li a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #f7b1e6aa;
+}
+/* Hide desktop menu, show burger on mobile */
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none !important;
+    }
+    .burger-menu {
+        display: flex !important;
+    }
+    .mobile-header {
+        padding-top: 0.7rem !important;
+        padding-bottom: 0.7rem !important;
+        min-height: 48px !important;
+    }
+    .logo-custom {
+        font-size: 1.18rem !important;
+        padding-left: 0.1em;
+    }
+}
+/* Show desktop menu, hide burger and mobile-menu on desktop */
+@media (min-width: 769px) {
+    .desktop-menu {
+        display: block !important;
+    }
+    .burger-menu,
+    .mobile-menu {
+        display: none !important;
+    }
+}
+/* ----------- MOBILE OPTIMIZATION ----------- */
+@media (max-width: 900px) {
+    .fullscreen-section, section, .section {
+        padding: 1.5rem 0.5rem !important;
+        min-height: unset;
+        height: auto;
+    }
+    .promo-title, .neon-title {
+        font-size: 2rem !important;
+    }
+    .gallery-photo {
+        height: 120px !important;
+        max-width: 96vw;
+    }
+    .product-card {
+        padding: 1rem 0.6rem !important;
+        border-radius: 1rem !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .container, .mx-auto {
+        max-width: 98vw !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    .fullscreen-section, section, .section {
+        padding: 1rem 0.1rem !important;
+    }
+    .glass {
+        border-radius: 1rem !important;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .gallery-photo {
+        min-width: 0 !important;
+        width: 100% !important;
+        height: 90px !important;
+    }
+    .product-card {
+        padding: 0.7rem 0.2rem !important;
+        border-radius: 0.7rem !important;
+    }
+    .promo-card {
+        border-radius: 0.9rem !important;
+        padding: 1.1rem 0.5rem !important;
+    }
+    .footer-social {
+        gap: 1.2rem;
+    }
+    .footer-social a,
+    .footer-social svg {
+        width: 32px !important;
+        height: 32px !important;
+        min-width: 32px !important;
+    }
+    .subscribe-bigbox {
+        max-width: 98vw !important;
+        margin-left: 0 !important;
+        padding: 0.7rem 0.3rem !important;
+        border-radius: 0.8rem !important;
+        margin-top: 0 !important;
+    }
+    .subscribe-bigbox p {
+        font-size: 1rem !important;
+        margin-bottom: 0.6rem !important;
+    }
+    .subscribe-bigbox input,
+    .subscribe-bigbox .btn-neon {
+        font-size: 0.97rem !important;
+        padding: 0.6rem 0.5rem !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .logo-custom { font-size: 1.1rem !important; }
+    .neon-title { font-size: 1.2rem !important; }
+    .gallery-photo { height: 60px !important; }
+}
+/* END MOBILE OPTIMIZATION */
+
+/* ---- WOW PROMO SECTION ---- */
+.promo-wow {
+    background: linear-gradient(110deg, #191926 70%, #5ed1ff22 100%);
+    border-radius: 2rem;
+    box-shadow: 0 6px 40px 0 #5ed1ff11;
+    margin-bottom: 2rem;
+}
+.promo-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffde59;
+    letter-spacing: 2px;
+    text-shadow: 0 0 12px #fff2, 0 0 18px #f7b1e622;
+    margin-bottom: 2rem;
+}
+.promo-container {
+    gap: 2.5rem;
+}
+.promo-card {
+    border-radius: 2rem;
+    box-shadow: 0 6px 32px 0 #f7b1e622, 0 0 0 #5ed1ff00;
+    border: 1.5px solid #5ed1ff55;
+    background: rgba(30,30,60,0.97);
+    transition: box-shadow 0.3s, transform 0.3s;
+    position: relative;
+    padding: 2rem 1.2rem;
+}
+.promo-card:hover {
+    box-shadow: 0 8px 42px 0 #ffde5933, 0 0 24px #5ed1ff33;
+    transform: translateY(-6px) scale(1.05);
+    border-color: #ffde59;
+}
+.promo-icon {
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 0 8px #5ed1ff44);
+    opacity: 0.82;
+}
+.promo-label {
+    font-size: 2rem;
+    color: #5ed1ff;
+    text-shadow: 0 0 9px #5ed1ff33;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.promo-sub {
+    color: #fff;
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+.promo-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, #ffde59 40%, #f7b1e6 100%);
+    color: #222;
+    font-weight: 600;
+    padding: 0.2em 1.2em;
+    border-radius: 999px;
+    font-size: 1rem;
+    box-shadow: 0 0 10px #ffde5933;
+    letter-spacing: 1.5px;
+}
+.promo-nav {
+    color: #ffd800 !important;
+    background: linear-gradient(90deg, #ffd80033 0%, #f7b1e633 100%);
+    text-shadow: 0 0 12px #ffd800aa, 0 0 18px #f7b1e6aa;
+    border-radius: 18px;
+    animation: promo-glow 2.2s infinite alternate;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    box-shadow: 0 0 18px #ffd80044, 0 0 0 #fff0;
+}
+.promo-nav:hover {
+    color: #fff !important;
+    background: linear-gradient(90deg, #ffd80077 0%, #f7b1e688 100%);
+    box-shadow: 0 0 36px #ffd80088, 0 0 18px #5ed1ff44;
+    text-shadow: 0 0 18px #fff, 0 0 10px #ffd800cc;
+}
+@keyframes promo-glow {
+    0% { box-shadow: 0 0 10px #ffd80044, 0 0 0 #fff0; }
+    35% { box-shadow: 0 0 20px #ffd80099, 0 0 4px #f7b1e6aa; }
+    70% { box-shadow: 0 0 30px #ffd800cc, 0 0 10px #f7b1e6aa; }
+    100% { box-shadow: 0 0 20px #ffd80099, 0 0 8px #f7b1e688; }
+}
+/* --- КНОПКИ-ВКЛАДКИ В МЕНЮ --- */
+.menu-btn {
+    display: inline-block;
+    padding: 0.4em 1.3em;
+    margin: 0 0.25em;
+    border-radius: 1.7em;
+    font-size: 1.13em;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+    background: rgba(30, 30, 60, 0.86);
+    color: #5ed1ff;
+    border: 1.5px solid #5ed1ff44;
+    box-shadow: 0 2px 10px 0 #5ed1ff22;
+    text-shadow: 0 0 7px #5ed1ff88;
+    transition:
+        background 0.22s,
+        color 0.22s,
+        box-shadow 0.22s,
+        border 0.19s,
+        text-shadow 0.22s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.menu-btn:hover,
+.menu-btn.active {
+    background: linear-gradient(90deg, #232345 65%, #5ed1ff 100%);
+    color: #fff;
+    border-color: #5ed1ff;
+    box-shadow: 0 0 18px #5ed1ff77, 0 0 12px #f7b1e655;
+    text-shadow: 0 0 16px #fff, 0 0 12px #5ed1ff99;
+    z-index: 2;
+}
+/* --- WOW-КНОПКА "АКЦІЇ" (яскраво-червоний стиль) --- */
+.menu-btn.promo-nav {
+    color: #fff; /* Текст білий */
+    border: 1.5px solid #ff2a2a77;
+    background: linear-gradient(90deg, #ff2a2a33 0%, #ff6d6d33 100%);
+    box-shadow: 0 0 18px #ff2a2a55, 0 0 0 #fff0;
+    text-shadow: 0 0 18px #ff2a2aaa, 0 0 10px #fff;
+    font-weight: 700;
+    animation: promo-glow-btn-red 2.4s infinite alternate;
+}
+.menu-btn.promo-nav:hover,
+.menu-btn.promo-nav.active {
+    background: linear-gradient(90deg, #ff2a2acc 5%, #ff6d6dbb 100%);
+    color: #fff; /* Текст білий */
+    border-color: #ff2a2a;
+    box-shadow: 0 0 32px #ff2a2a99, 0 0 18px #ff6d6daa;
+    text-shadow: 0 0 24px #fff, 0 0 14px #ff2a2acc;
+}
+@keyframes promo-glow-btn-red {
+    0% { box-shadow: 0 0 10px #ff2a2a33, 0 0 0 #fff0; }
+    30% { box-shadow: 0 0 22px #ff2a2a99, 0 0 6px #ff6d6dcc; }
+    70% { box-shadow: 0 0 40px #ff2a2acc, 0 0 12px #ff6d6dbb; }
+    100% { box-shadow: 0 0 22px #ff2a2a99, 0 0 9px #ff6d6d88; }
+}
+/* -- Адаптація для мобільного меню -- */
+.mobile-menu ul li a.menu-btn {
+    font-size: 1.10rem;
+    margin: 0.2em 0;
+    width: 90vw;
+    max-width: 420px;
+    display: block;
+    text-align: center;
+}
+
+/* Додаємо стиль для learn-more-content */
+.learn-more-content {
+    transition: max-height 0.5s, opacity 0.4s;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+.learn-more-content.open {
+    max-height: 400px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ---- Subscribe box ---- */
+.subscribe-bigbox {
+    max-width: 400px !important;
+    width: 100% !important;
+    margin-left: 240px !important; /* десктоп - правіше */
+    background: rgba(35,35,69,0.94) !important;
+    border-radius: 1.2rem !important;
+    padding: 1.1rem 0.7rem !important;
+    box-shadow: 0 6px 24px #5ed1ff22, 0 0 14px #f7b1e633 !important;
+}
+.subscribe-bigbox p {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.8rem !important;
+}
+.subscribe-bigbox input,
+.subscribe-bigbox .btn-neon {
+    font-size: 1rem !important;
+    padding: 0.8rem 0.7rem !important;
+}
+
+/* END Subscribe box */
+
+/* Fix for section paddings if not enough space */
+section, .section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+footer {
+    padding: 2.5rem 1.5rem 2rem;
+}
+
+@media (max-width: 900px) {
+  html, body {
+    scroll-behavior: auto !important;
+  }
+}
+body {
+  overflow-x: hidden;
+}
+
+/* Додаємо до твоїх стилів — можна вставити після @media (max-width: 640px) або наприкінці файлу */
+
+/* 1. Fix для "Запали свою емоцію" — повноекранний hero без перекриття хедером */
+@media (max-width: 640px) {
+  #home.fullscreen-section {
+    min-height: 100dvh !important;
+    height: 100dvh !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    position: relative;
+  }
+  /* Компенсуємо хедер */
+  header.mobile-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 50;
+  }
+  #home .neon-title,
+  #home p,
+  #home .btn-neon {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block;
+  }
+}
+
+/* 2. Кнопка "Дізнатися більше" та заголовки/описи в product-card по центру */
+@media (max-width: 640px) {
+  .product-card h3,
+  .product-card p,
+  .product-card .stars,
+  .product-card .btn-neon {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+    width: 100%;
+  }
+  .product-card .btn-neon {
+    width: 90% !important;
+    max-width: 320px !important;
+    margin-top: 1rem !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* 3. Галерея фото в about — зробити фото більш пропорційними */
+@media (max-width: 640px) {
+  .gallery-photo {
+    height: 180px !important;
+    min-height: 140px !important;
+    max-height: 220px !important;
+  }
+  .gallery-photo img {
+    object-fit: cover !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 1rem !important;
+  }
+}
+
+/* 4. Вікно "Підпишись на новинки" по центру */
+@media (max-width: 640px) {
+  .subscribe-bigbox {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    left: 50%;
+    transform: translateX(0%) !important;
+    position: static !important;
+    max-width: 98vw !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.fullscreen-section {
+  scroll-margin-top: 64px; /* або висота твого header */
+}
+@media (max-width: 640px) {
+  .fullscreen-section {
+    scroll-margin-top: 56px; /* або фактична висота мобільного header */
+  }
+}
+  .fullscreen-section {
+    scroll-margin-top: 56px; /* або фактична висота мобільного header */
+  }
+}

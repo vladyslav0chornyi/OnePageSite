@@ -79,7 +79,11 @@ window.addEventListener('load', setActiveMenu);
     function scrollToSection(idx) {
         isWheelLocked = true;
         currentIndex = idx;
-        sections[currentIndex].scrollIntoView({behavior: 'smooth', block: 'start'});
+        // Знаходь висоту header
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 0;
+        const sectionTop = sections[currentIndex].getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({top: sectionTop, behavior: 'smooth'});
         let finished = false;
         function finish() {
             if (finished) return;

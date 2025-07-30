@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
     <!-- Floating vape icons (SVG, сині та неонові) -->
@@ -84,8 +84,8 @@
                 <div class="promo-icon">
                     <svg width="54" height="54" viewBox="0 0 54 54"><circle cx="27" cy="27" r="25" fill="#ffde59" opacity="0.76"/><path d="M27 12C22 23 36 17 27 35C19 16 32 18 27 12Z" fill="#f7b1e6" stroke="#5ed1ff" stroke-width="2"/></svg>
                 </div>
-                <h3 class="promo-label mb-2">1+1=3 на рідини</h3>
-                <p class="promo-sub mb-4">Купуй 2 рідини — отримуй третю у подарунок! Всі смаки беруть участь.</p>
+                <h3 class="promo-label mb-2">1+1=3</h3>
+                <p class="promo-sub mb-4">Купуєш 2 рідини — третя рідина чи картридж у подарунок!</p>
                 <span class="promo-badge mb-2">до 31.08</span>
             </div>
             <!-- Promo 2 -->
@@ -93,8 +93,8 @@
                 <div class="promo-icon">
                     <svg width="54" height="54" viewBox="0 0 54 54"><rect x="10" y="10" width="34" height="34" rx="9" fill="#5ed1ff" opacity="0.58"/><path d="M15 27h24M27 15v24" stroke="#fff" stroke-width="2"/></svg>
                 </div>
-                <h3 class="promo-label mb-2">-25% на пристрої</h3>
-                <p class="promo-sub mb-4">Всі моделі зі знижкою! Тільки цього місяця.</p>
+                <h3 class="promo-label mb-2">Приведи друга — отримай подарунок!</h3>
+                <p class="promo-sub mb-4">Запроси друга та отримай бонус. Деталі дізнавайтесь у консультанта!</p>
                 <span class="promo-badge mb-2">до 31.08</span>
             </div>
             <!-- Promo 3 -->
@@ -124,10 +124,9 @@
                 <button class="btn-neon px-8 py-2 text-lg learn-more-btn">Дізнатися більше</button>
                 <div class="learn-more-content mt-4 text-blue-100">
                     <ul class="list-disc pl-6 text-base">
-                        <li>Рідини сертифіковані та безпечні для здоров’я.</li>
-                        <li>Широкий вибір: фруктові, десертні, класичні смаки.</li>
-                        <li>Регулярне оновлення асортименту.</li>
-                        <li>Підходять для всіх сучасних моделей пристроїв.</li>
+                        <li>Оригінальні рідини від топових брендів: Chaser, Lucky, Octobar та інші.</li>
+                        <li>Яскраві фруктові, десертні, класичні, м’ятні смаки — для кожного знайдеться свій вайб!</li>
+                        <li>Постійне оновлення асортименту та ексклюзивні новинки.</li>
                     </ul>
                 </div>
             </div>
@@ -136,14 +135,13 @@
                 <h3 class="text-3xl font-bold neon-gradient mb-2">Пристрої</h3>
                 <div class="stars mb-2">★★★★★</div>
                 <p class="text-blue-100 mb-4">Сучасний дизайн, зручність, довговічність. Ваш стиль — ваш пристрій.</p>
-                <p class="text-[#ffde59] font-bold text-xl mb-4">Від 1000 грн</p>
+                <p class="text-[#ffde59] font-bold text-xl mb-4">Від 700 грн</p>
                 <button class="btn-neon px-8 py-2 text-lg learn-more-btn">Дізнатися більше</button>
                 <div class="learn-more-content mt-4 text-blue-100">
                     <ul class="list-disc pl-6 text-base">
-                        <li>Оригінальні моделі топових брендів.</li>
-                        <li>Різні формати: pod-системи, box-моди, pen-style.</li>
-                        <li>Висока автономність і якість збірки.</li>
-                        <li>Технічна підтримка і гарантія.</li>
+                        <li>Оригінальні pod-системи від топових брендів.</li>
+                        <li>Великий вибір моделей.</li>
+                        <li>Висока автономність, зручність у використанні й якісна збірка для щоденного комфорту.</li>
                     </ul>
                 </div>
             </div>
@@ -151,15 +149,15 @@
                 <img src="{{ url_for('static', filename='images/products/product3.png') }}" alt="Аксесуари" class="rounded-lg mb-6 shadow-lg w-full h-56 object-cover">
                 <h3 class="text-3xl font-bold neon-gradient mb-2">Аксесуари</h3>
                 <div class="stars mb-2">★★★★★</div>
-                <p class="text-blue-100 mb-4">Додай яскравих штрихів до свого ароматного світу з нашими аксесуарами!</p>
+                <p class="text-blue-100 mb-4">Додай яскравих штрихів до свого ароматного світу!</p>
                 <p class="text-[#ffde59] font-bold text-xl mb-4">Від 140 грн</p>
                 <button class="btn-neon px-8 py-2 text-lg learn-more-btn">Дізнатися більше</button>
                 <div class="learn-more-content mt-4 text-blue-100">
                     <ul class="list-disc pl-6 text-base">
-                        <li>Захисні чохли, шнурки, кейси для пристроїв.</li>
-                        <li>Стильні mouthpiece та заглушки.</li>
-                        <li>Оригінальні зарядні кабелі та адаптери.</li>
-                        <li>Подарункові набори для друзів і себе.</li>
+                        <li>Оригінальні картриджі для систем усіх найпопулярніших брендів.</li>
+                        <li>Постійно в наявності картриджі Vinci, Vaporesso, Argus, GeekVape, Voopoo та інші.</li>
+                        <li>Різні опції: під сольову чи органічну рідину, з різним опором і об'ємом.</li>
+                        <li>Тільки оригінальна продукція.</li>
                     </ul>
                 </div>
             </div>
@@ -171,8 +169,8 @@
     <!-- ПРО ДУЙ ШОП + ГАЛЕРЕЯ ФОТО МАГАЗИНУ -->
     <section id="about" class="fullscreen-section section py-20">
         <div class="container mx-auto text-center glass px-8 py-16 flex flex-col items-center justify-center h-full">
-            <h2 class="neon-title mb-4 neon-gradient">Про Дуй Шоп</h2>
-            <p class="text-2xl text-blue-100 max-w-4xl mx-auto mb-10">Дуй Шоп — це більше, ніж магазин. Це місце, де аромат, стиль і технології творять магію моменту. Тут кожен знаходить щось особливе — для себе чи для подарунка. Довіра, якість і турбота про ваш комфорт — наші головні цінності. Приходьте за емоціями, що залишаться з вами назавжди!</p>
+            <h2 class="neon-title mb-4 neon-gradient">Дуй Шоп</h2>
+            <p class="text-2xl text-blue-100 max-w-4xl mx-auto mb-10">Duy Shop — це не просто магазин. Це аромат, стиль і кайф у кожній краплі. Для себе чи на подарунок — знайдеш щось особливе. Якість, турбота і атмосфера — все для твого комфорту. </p>
             <div class="gallery-grid mb-2 grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="gallery-photo">
                     <img src="{{ url_for('static', filename='images/shop/shop1.png') }}" alt="Магазин фото 1">
@@ -224,12 +222,12 @@
 <!--                        info@dudishop.com-->
 <!--                    </a>-->
                     <!-- Phone -->
-                    <a href="tel:+380123456789" class="flex items-center gap-3 text-2xl text-blue-100 neon-link hover:underline">
-                        <span>
-                            <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><path d="M7 6v3a17 17 0 0 0 16 16h3a2 2 0 0 0 2-2v-2.5a2 2 0 0 0-2-2c-1.07 0-2.12-.13-3.12-.37a2 2 0 0 0-2.25.66l-1.06 1.32a13.05 13.05 0 0 1-5.68-5.68l1.32-1.06a2 2 0 0 0 .66-2.25A14.85 14.85 0 0 1 7.5 9a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2.5a2 2 0 0 0 2 2z" stroke="#5ed1ff" stroke-width="2" fill="none"/></svg>
-                        </span>
-                        +380 123 456 789
-                    </a>
+<!--                    <a href="tel:+380123456789" class="flex items-center gap-3 text-2xl text-blue-100 neon-link hover:underline">-->
+<!--                        <span>-->
+<!--                            <svg width="26" height="26" viewBox="0 0 32 32" fill="none"><path d="M7 6v3a17 17 0 0 0 16 16h3a2 2 0 0 0 2-2v-2.5a2 2 0 0 0-2-2c-1.07 0-2.12-.13-3.12-.37a2 2 0 0 0-2.25.66l-1.06 1.32a13.05 13.05 0 0 1-5.68-5.68l1.32-1.06a2 2 0 0 0 .66-2.25A14.85 14.85 0 0 1 7.5 9a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v2.5a2 2 0 0 0 2 2z" stroke="#5ed1ff" stroke-width="2" fill="none"/></svg>-->
+<!--                        </span>-->
+<!--                        +380 123 456 789-->
+<!--                    </a>-->
                     <!-- Address -->
                     <div class="flex items-center gap-3 text-2xl text-blue-100 mb-2">
                         <span>
