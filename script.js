@@ -17,36 +17,87 @@ if (burgerBtn && mobileMenu) {
     });
 }
 
-// Відгуки (3 неонових)
-const reviews = [
-    {text: "Аромати, які дарують нові емоції!", author: "Олексій Т.", stars: 5},
-    {text: "Сервіс на висоті, асортимент — супер!", author: "Анна Л.", stars: 5},
-    {text: "Замовляю вже втретє — все ідеально!", author: "Марія П.", stars: 5},
-    {text: "Зручно, швидко, дуже приємно!", author: "Дмитро К.", stars: 5},
-    {text: "Смак і аромат — просто космос!", author: "Олена М.", stars: 5},
-    {text: "Кожна покупка — радість!", author: "Петро В.", stars: 5},
-];
-const reviewList = document.getElementById('review-list');
-function renderReviews() {
-    reviewList.innerHTML = '';
-    let shown = [];
-    while (shown.length < 3) {
-        const idx = Math.floor(Math.random() * reviews.length);
-        if (!shown.includes(idx)) {
-            shown.push(idx);
-            const r = reviews[idx];
-            const star = '<span class="stars">★★★★★</span>';
-            const card = document.createElement('div');
-            card.className = 'review-card flex flex-col items-center animate-fade-in';
-            card.innerHTML = `<div>${star}</div>
-                <p class="text-xl neon-gradient my-4 text-center">${r.text}</p>
-                <span class="font-bold neon-link">${r.author}</span>`;
-            reviewList.appendChild(card);
+// ----- ПІДСВІЧУВАННЯ АКТИВНОЇ ВКЛАДКИ МЕНЮ ПРИ СКРОЛІ -----
+const sectionIds = ['home', 'promo', 'products', 'about', 'contact', 'footer'];
+const menuLinks = document.querySelectorAll('.menu-btn');
+
+function setActiveMenu() {
+    let found = false;
+    const scrollY = window.scrollY + window.innerHeight * 0.28;
+    for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sectionIds[i]);
+        if (section && section.offsetTop <= scrollY) {
+            menuLinks.forEach(link => link.classList.remove('active'));
+            menuLinks.forEach(link => {
+                if (link.getAttribute('href') === '#' + sectionIds[i]) {
+                    link.classList.add('active');
+                }
+            });
+            found = true;
+            break;
         }
     }
+    if (!found) menuLinks.forEach(link => link.classList.remove('active'));
 }
-renderReviews();
-setInterval(renderReviews, 4800);
+window.addEventListener('scroll', setActiveMenu);
+window.addEventListener('load', setActiveMenu);
+
+// ----- WHEEL SNAP SCROLL (1 колесо = 1 секція, блокування wheel під час анімації) -----
+(function() {
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 1;
+    if (isTouch) return; // На мобільних не застосовуємо
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+    let isWheelLocked = false;
+    let currentIndex = 0;
+
+    function getCurrentSectionIndex() {
+        let idx = 0;
+        const y = window.scrollY + window.innerHeight * 0.33;
+        for (let i = 0; i < sections.length; i++) {
+            if (sections[i].offsetTop <= y) idx = i;
+        }
+        return idx;
+    }
+    currentIndex = getCurrentSectionIndex();
+
+    function scrollToSection(idx) {
+        isWheelLocked = true;
+        currentIndex = idx;
+        sections[currentIndex].scrollIntoView({behavior: 'smooth', block: 'start'});
+        let finished = false;
+        function finish() {
+            if (finished) return;
+            finished = true;
+            isWheelLocked = false;
+        }
+        let checker = setInterval(() => {
+            const y = window.scrollY;
+            const targetY = sections[currentIndex].offsetTop;
+            if (Math.abs(y - targetY) < 2) {
+                finish();
+                clearInterval(checker);
+            }
+        }, 28);
+        setTimeout(() => {
+            finish();
+            clearInterval(checker);
+        }, 700);
+    }
+
+    window.addEventListener('wheel', function(e) {
+        if (mobileMenu && mobileMenu.classList.contains('open')) return;
+        if (isWheelLocked) {
+            e.preventDefault();
+            return false;
+        }
+        const dir = e.deltaY > 0 ? 1 : -1;
+        let idx = getCurrentSectionIndex();
+        idx += dir;
+        if (idx < 0 || idx >= sections.length) return;
+        e.preventDefault();
+        scrollToSection(idx);
+    }, {passive: false});
+})();
 
 // Subscribe form effect
 const subscribeForm = document.getElementById('subscribe-form');
@@ -60,3 +111,50 @@ if(subscribeForm){
         this.reset();
     });
 }
+
+// Зберемо всі секції, які треба скролити
+const sections = Array.from(document.querySelectorAll('.fullpage-section'));
+let scrolling = false;
+let currentSection = 0;
+
+// Знайти індекс секції, що зараз у viewport (на початку)
+function getCurrentSectionIndex() {
+    const scroll = window.scrollY;
+    let idx = 0;
+    for (let i = 0; i < sections.length; i++) {
+        if (sections[i].offsetTop - 50 <= scroll) idx = i;
+    }
+    return idx;
+}
+currentSection = getCurrentSectionIndex();
+
+window.addEventListener('wheel', function(e) {
+    if (scrolling) return;
+    scrolling = true;
+
+    // deltaY > 0 — вниз, < 0 — вгору
+    if (e.deltaY > 5 && currentSection < sections.length - 1) {
+        currentSection++;
+    } else if (e.deltaY < -5 && currentSection > 0) {
+        currentSection--;
+    } else {
+        scrolling = false;
+        return;
+    }
+
+    sections[currentSection].scrollIntoView({behavior: 'smooth'});
+    setTimeout(() => scrolling = false, 600); // блокування, щоб не перескочити кілька секцій одразу
+
+    e.preventDefault();
+}, {passive: false});
+
+// ===== Показ/приховування додаткового тексту для "Дізнатися більше" =====
+document.querySelectorAll('.learn-more-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const content = this.nextElementSibling;
+        if (content && content.classList.contains('learn-more-content')) {
+            content.classList.toggle('open');
+            this.textContent = content.classList.contains('open') ? 'Сховати' : 'Дізнатися більше';
+        }
+    });
+});
