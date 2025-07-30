@@ -10,8 +10,12 @@ app = Flask(__name__)
 
 # --- Google Sheets налаштування ---
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SERVICE_ACCOUNT_FILE = 'service_account.json'  # шлях до твого JSON-файлу
-#SERVICE_ACCOUNT_FILE = "/etc/secrets/service_account.json"
+# Шлях до service_account.json — для Render краще так:
+SERVICE_ACCOUNT_FILE = (
+    "/etc/secrets/service_account.json"
+    if os.path.exists("/etc/secrets/service_account.json")
+    else "service_account.json"
+)
 SPREADSHEET_ID = '1bgRbJv8CRkITl1r2x1gFQj2keYlV_W4Zf9Ojp1WUEIU'  # встав свій ID (з URL)
 SHEET_NAME = 'Sheet1'  # або як називається лист
 
@@ -23,8 +27,17 @@ sheet = gc.open_by_key(SPREADSHEET_ID).worksheet(SHEET_NAME)
 ADMIN_SECRET = "Sharaga"
 
 def is_valid_ua_phone(phone):
+    """Валідація українського номера телефону."""
     pattern = r"^(?:\+380|380|0)\d{9}$"
     return bool(re.fullmatch(pattern, phone))
+
+def is_valid_name(name):
+    """
+    Приймає українські та латинські літери, пробіли, дефіси, апостроф.
+    Довжина — мінімум 2 символи.
+    """
+    pattern = r"^[A-Za-zА-Яа-яЁёІіЇїЄєҐґ'’ʼ\- ]{2,}$"
+    return bool(re.fullmatch(pattern, name))
 
 @app.route("/subscribe", methods=["POST"])
 def subscribe():
@@ -34,8 +47,11 @@ def subscribe():
     if not name or not phone:
         return jsonify({"success": False, "message": "Вкажіть ім'я і телефон!"}), 400
 
+    if not is_valid_name(name):
+        return jsonify({"success": False, "message": "Введіть коректне ім'я. Допустимі лише літери, пробіли, дефіси, апостроф. Мінімум 2 символи."}), 400
+
     if not is_valid_ua_phone(phone):
-        return jsonify({"success": False, "message": "Введіть коректний номер телефону"}), 400
+        return jsonify({"success": False, "message": "Введіть коректний номер телефону у форматі +380XXXXXXXXX, 380XXXXXXXXX або 0XXXXXXXXX"}), 400
 
     sheet.append_row([name, phone])
     return jsonify({"success": True, "message": "Дякуємо за підписку!"}), 200
