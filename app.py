@@ -4,12 +4,14 @@ from google.oauth2.service_account import Credentials
 import io
 import csv
 import os
+import re
 
 app = Flask(__name__)
 
 # --- Google Sheets налаштування ---
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SERVICE_ACCOUNT_FILE = "/etc/secrets/service_account.json"
+SERVICE_ACCOUNT_FILE = 'service_account.json'  # шлях до твого JSON-файлу
+#SERVICE_ACCOUNT_FILE = "/etc/secrets/service_account.json"
 SPREADSHEET_ID = '1bgRbJv8CRkITl1r2x1gFQj2keYlV_W4Zf9Ojp1WUEIU'  # встав свій ID (з URL)
 SHEET_NAME = 'Sheet1'  # або як називається лист
 
@@ -20,6 +22,10 @@ sheet = gc.open_by_key(SPREADSHEET_ID).worksheet(SHEET_NAME)
 # --- Інші налаштування ---
 ADMIN_SECRET = "Sharaga"
 
+def is_valid_ua_phone(phone):
+    pattern = r"^(?:\+380|380|0)\d{9}$"
+    return bool(re.fullmatch(pattern, phone))
+
 @app.route("/subscribe", methods=["POST"])
 def subscribe():
     data = request.get_json(force=True)
@@ -27,6 +33,9 @@ def subscribe():
     phone = data.get("phone", "").strip()
     if not name or not phone:
         return jsonify({"success": False, "message": "Вкажіть ім'я і телефон!"}), 400
+
+    if not is_valid_ua_phone(phone):
+        return jsonify({"success": False, "message": "Введіть коректний номер телефону"}), 400
 
     sheet.append_row([name, phone])
     return jsonify({"success": True, "message": "Дякуємо за підписку!"}), 200
