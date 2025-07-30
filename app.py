@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 # --- Google Sheets налаштування ---
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SERVICE_ACCOUNT_FILE = 'secret/service_account.json'  # шлях до твого JSON-файлу
+SERVICE_ACCOUNT_FILE = "/etc/secrets/service_account.json"
 SPREADSHEET_ID = '1bgRbJv8CRkITl1r2x1gFQj2keYlV_W4Zf9Ojp1WUEIU'  # встав свій ID (з URL)
 SHEET_NAME = 'Sheet1'  # або як називається лист
 
